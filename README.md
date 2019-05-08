@@ -7,7 +7,7 @@ WebSocket 测试
 
 ### 添加maven依赖
 
-```
+```xml
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-websocket</artifactId>
@@ -16,7 +16,7 @@ WebSocket 测试
 ### 服务端
 > #### config 包下做一个配置
 
-```
+```java
 @Component
 public class WebSocketConfig {
     @Bean
@@ -29,7 +29,7 @@ public class WebSocketConfig {
 
 > #### Service包下直接创建类 
 
-```
+```java
 @Component
 @ServerEndpoint("/webSocket")
 @Slf4j
@@ -75,7 +75,7 @@ public class WebSocket {
 
 ### 客户端 script
 
-```
+```javascript
 <script>
     var websocket = null;
     if('WebSocket' in window) {
@@ -116,16 +116,17 @@ public class WebSocket {
 
 ### Controller
 
-```
+```java
     @Autowired
     private WebSocket webSocket;
 ```
 
-```
+```java
     //发送websocket消息
     webSocket.sendMessage(orderDTO.getOrderId());
 ```
-```
+> * demo
+```java
     @Controller
     @RequestMapping("/getwebsocket")
     public class WsSendController {
